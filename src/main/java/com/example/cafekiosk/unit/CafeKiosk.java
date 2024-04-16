@@ -17,6 +17,16 @@ public class CafeKiosk {
         beverages.add(beverage);
     }
 
+    public void add(Beverage beverage, int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than 0");
+        }
+
+        for (int i = 0; i < quantity; i++) {
+            beverages.add(beverage);
+        }
+    }
+
     public void remove(Beverage beverage) {
         beverages.remove(beverage);
     }

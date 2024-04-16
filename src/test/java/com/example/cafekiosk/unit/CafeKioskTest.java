@@ -5,6 +5,7 @@ import com.example.cafekiosk.unit.beverage.Latte;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CafeKioskTest {
 
@@ -28,6 +29,29 @@ class CafeKioskTest {
 
         assertThat(cafeKiosk.getBeverages().size()).isEqualTo(1);
         assertThat(cafeKiosk.getBeverages().get(0).getName()).isEqualTo("Americano");
+    }
+
+    @Test
+    void addSeveralBeverages() {
+        // 해피 케이스
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        cafeKiosk.add(americano, 2);
+
+        assertThat(cafeKiosk.getBeverages().get(0)).isEqualTo(americano);
+        assertThat(cafeKiosk.getBeverages().get(1)).isEqualTo(americano);
+    }
+
+    @Test
+    void addZeroBeverages() {
+        // 예외 케이스
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+
+        assertThatThrownBy(() -> cafeKiosk.add(americano, 0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Quantity must be greater than 0");
     }
 
     @Test
