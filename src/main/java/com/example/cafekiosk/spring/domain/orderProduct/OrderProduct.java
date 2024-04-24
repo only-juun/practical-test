@@ -23,7 +23,7 @@ public class OrderProduct extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product; // Product는 굳이 주문에 대한 정보는 몰라도 되므로 OneToMany는 작성하지 않음
 
-    public OrderProduct(Product product, Order order) {
+    public OrderProduct(Order order, Product product) {
         this.product = product;
         this.order = order;
     }

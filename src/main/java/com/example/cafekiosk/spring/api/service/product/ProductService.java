@@ -23,6 +23,6 @@ public class ProductService {
 
         return products.stream()
                 .map(ProductResponse::of)
-                .toList();
+                .collect(Collectors.toList());
     }
 }
