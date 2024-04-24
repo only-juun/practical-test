@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    default: local
+
+  datasource:
+    url: jdbc:h2:mem:~/cafeKioskApplication
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true # 만들어낸 sql 확인
+    properties:
+      hibernate:
+        format_sql: true # 만들어낸 sql을 정갈하게 만듦
+    defer-datasource-initialization: true # (2.5~) Hibernate 초기화 이후 data.sql 실행.
+
+  h2:
+    console:
+      enabled: true
+
+---
+# 테스트용 프로파일
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: never # sql initializer를 사용하지 않겠다는 의미
