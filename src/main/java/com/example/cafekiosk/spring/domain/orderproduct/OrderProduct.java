@@ -1,4 +1,4 @@
-package com.example.cafekiosk.spring.domain.orderProduct;
+package com.example.cafekiosk.spring.domain.orderproduct;
 
 import com.example.cafekiosk.spring.domain.BaseEntity;
 import com.example.cafekiosk.spring.domain.order.Order;
