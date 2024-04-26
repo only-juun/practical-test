@@ -8,13 +8,12 @@ import com.example.cafekiosk.spring.domain.product.ProductRepository;
 import com.example.cafekiosk.spring.domain.product.ProductType;
 import com.example.cafekiosk.spring.domain.stock.Stock;
 import com.example.cafekiosk.spring.domain.stock.StockRepository;
-import jakarta.transaction.Transactional;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
 @ActiveProfiles("test")
-//@Transactional
+@Transactional
 @SpringBootTest
 class OrderServiceTest {
 
@@ -45,15 +44,15 @@ class OrderServiceTest {
     @Autowired
     private StockRepository stockRepository;
 
-    @AfterEach
-    void tearDown() {
-        // 데이터 클랜징 작업: 이전 작업이 다음 작업에 영향을 미치지 않도록
-//        productRepository.deleteAll();
-        orderProductRepository.deleteAllInBatch();
-        productRepository.deleteAllInBatch();
-        orderRepository.deleteAllInBatch();
-        stockRepository.deleteAllInBatch();
-    }
+//    @AfterEach
+//    void tearDown() {
+//        // 데이터 클랜징 작업: 이전 작업이 다음 작업에 영향을 미치지 않도록
+////        productRepository.deleteAll();
+//        orderProductRepository.deleteAllInBatch();
+//        productRepository.deleteAllInBatch();
+//        orderRepository.deleteAllInBatch();
+//        stockRepository.deleteAllInBatch();
+//    }
 
     @DisplayName("주문 번호 리스트를 받아 주문을 생성한다.")
     @Test
