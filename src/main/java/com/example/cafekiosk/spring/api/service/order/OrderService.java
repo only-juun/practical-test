@@ -1,6 +1,7 @@
 package com.example.cafekiosk.spring.api.service.order;
 
 import com.example.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
+import com.example.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import com.example.cafekiosk.spring.domain.order.Order;
 import com.example.cafekiosk.spring.domain.order.OrderRepository;
 import com.example.cafekiosk.spring.domain.product.Product;
@@ -29,7 +30,7 @@ public class OrderService {
      * 재고 감소 -> 동시성 고민이 필요
      * Optimistic Lock 또는 Pessimistic Lock 등 활용
      */
-    public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDateTime) {
+    public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registeredDateTime) {
         List<String> productNumbers = request.getProductNumbers();
         // Product 찾기
         List<Product> products = findProductsBy(productNumbers);
