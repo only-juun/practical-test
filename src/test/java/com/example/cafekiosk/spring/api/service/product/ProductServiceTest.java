@@ -12,15 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.example.cafekiosk.spring.domain.product.ProductSellingStatus.*;
+import static com.example.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static com.example.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -52,7 +50,7 @@ class ProductServiceTest {
                 .build();
 
         // when - 동작
-        ProductResponse productResponse = productService.createProduct(request);
+        ProductResponse productResponse = productService.createProduct(request.toServiceRequest());
 
         // then - 검증
         assertThat(productResponse)
@@ -80,7 +78,7 @@ class ProductServiceTest {
                 .build();
 
         // when - 동작
-        ProductResponse productResponse = productService.createProduct(request);
+        ProductResponse productResponse = productService.createProduct(request.toServiceRequest());
 
         // then - 검증
         assertThat(productResponse)
