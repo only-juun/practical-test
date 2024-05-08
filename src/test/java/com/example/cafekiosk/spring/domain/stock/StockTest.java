@@ -10,18 +10,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @SpringBootTest
 class StockTest {
 
+    private static final Stock stock = Stock.create("001", 1);
+
     @Test
     @DisplayName("재고의 수량이 제공된 수량보다 작은지 확인한다.")
     void isQuantityLessThan() {
         // given
-        Stock stock = Stock.create("001", 1);
+//        Stock stock = Stock.create("001", 1);
         int quantity = 2;
 
         // when
         boolean result = stock.isQuantityLessThan(quantity);
 
         // then
-//        assertTrue(result);
         assertThat(result).isTrue();
     }
 
@@ -29,15 +30,13 @@ class StockTest {
     @DisplayName("재고를 주어진 개수만큼 차감할 수 있다.")
     void deductQuantity() {
         // given
-        Stock stock = Stock.create("001", 1);
+//        Stock stock = Stock.create("001", 1);
         int quantity = 1;
 
         // when
         stock.deductQuantity(quantity);
 
         // then
-//        assertTrue(result);
-//        assertThat(stock.getQuantity()).isEqualTo(0);
         assertThat(stock.getQuantity()).isZero();
     }
 

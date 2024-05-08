@@ -47,7 +47,7 @@ class OrderServiceTest {
 //    @AfterEach
 //    void tearDown() {
 //        // 데이터 클랜징 작업: 이전 작업이 다음 작업에 영향을 미치지 않도록
-////        productRepository.deleteAll();
+//        productRepository.deleteAll();
 //        orderProductRepository.deleteAllInBatch();
 //        productRepository.deleteAllInBatch();
 //        orderRepository.deleteAllInBatch();
